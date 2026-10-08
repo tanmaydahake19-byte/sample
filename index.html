@@ -1,0 +1,30 @@
+                        }
+                    }
+                }
+            }
+            refreshUI();
+        }
+        function openTotalWaterModal() {
+            const total = waterList.getTotalWater();
+            const cap = waterList.getTotalCapacity();
+            alert(`Talegaon Dabhade Grid Report:\n- Total Available Water = ${total.toLocaleString()} Litres\n- Total Capacity = ${cap.toLocaleString()} Litres\n- Overall Town Water Reserve = ${((total/cap)*100).toFixed(1)}%`);
+        }
+        // Talegaon Dabhade Default Dataset
+        function resetToSampleData() {
+            waterList.head = null;
+            waterList.addSource(101, 'Talegaon Talav (Dabhade Lake) Treatment', 'Ward 1 - Old Town, Dabhade Wada', 18000, 14200, 1200);
+            waterList.addSource(102, 'Indrayani River Intake Station', 'Kund Mala Road, Indrayani Basin', 30000, 23500, 2800);
+            waterList.addSource(103, 'MIDC Phase 1 Elevated Storage (ESR)', 'Navlakh Umbre MIDC Corridor', 22000, 9500, 1900);
+            waterList.addSource(104, 'Yashwantnagar & Station Road Water Tower', 'Ward 4 - Talegaon Station Zone', 9000, 2400, 850);
+            waterList.addSource(105, 'Varale Hill Master Balancing Reservoir', 'Ward 12 - Varale Gaon Hilltop', 16000, 13800, 1100);
+            
+            waterList.weeklyData = [5400, 6100, 5800, 7200, 6900, 8400, 7600];
+            refreshUI();
+        }
+        // Initialize on load
+        window.addEventListener('DOMContentLoaded', () => {
+            resetToSampleData();
+        });
+    </script>
+</body>
+</html>
